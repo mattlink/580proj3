@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body>
-        <script src="dist/bundle.js"></script>
+        <script src="bundle.js"></script>
         <div style="margin:auto; margin-top: 12px; margin-bottom: 24px; width: 600px;">
 
 
@@ -15,21 +15,21 @@
             <!-- The snippets below were taken from the source code to run the above demo.  -->
 
             <h2>Flyweight Pattern:</h2>
-            Note the room.wallTile and room.floorTile field variables to new instances of Tile objects. These tile objects, room.wallTile and room.floorTile, will all use the same instantiation of the Tile class. 
-            So all of the: <div class="tile" style="background-color:lightyellow;color:green;">Y</div> you see in the above demo are rendered using the same instance of the Tile class,
-            and similarly for all the <div class="tile" style="background-color:black;color:brown;">.</div> you see.
+            Note how the room.wallTile and room.floorTile field variables are set to new instances of Tile objects. These tile objects, room.wallTile and room.floorTile, will all use this same instantiation of the Tile class. 
+            So all of the: <div class="tile" style="color:green;background-color:black;">U</div> you see in the above demo are rendered using the same instance of the Tile class,
+            and same for all of the <div class="tile" style="color:brown;background-color:white;">.</div> you see.
             <pre>
                 <code>
-// room configuration
+// set up a room (this could be loaded via a JSON file)
 let room  = new Cave(this.WIDTH, this.HEIGHT, 'Cave');
-room.wallTile = new Tile('Y', 'green', 'lightyellow');
-room.floorTile = new Tile('.', 'brown', 'black');
+room.wallTile = new Tile('U', 'green', 'black');
+room.floorTile = new Tile('.', 'black', 'white');
 room.init();
                 </code>
             </pre>
 
             <h2>Update Method Pattern:</h2>
-            Note how the Game class requires an update method to be provided.
+            Note how the abstract Game class requires an update method to be provided.
             <pre>
                 <code>
 export abstract class Game {
@@ -48,7 +48,7 @@ export abstract class Game {
                 </code>
             </pre>
             
-            Instantiate our implementation of Game.
+            Instantiating our implementation of Game.
             <pre>
                 <code>
 let g = new Proj3Demo();
@@ -88,7 +88,7 @@ class Proj3Demo extends Game {
                 </code>
             </pre>
 
-            Here is the World class takeTurn() method, this method could just as accurately be named update(). It allows the actors of every room to take a turn.
+            Here is the World class' takeTurn() method, this method could just as accurately be named update(). It allows the actors of every room to take a turn.
 
             <pre>
                 <code>
@@ -134,10 +134,9 @@ export class Room {
             
 
             <h2>Spatial Partitioning:</h2>
-            The below code is from the Cave init() method. A Binary Space Partioning technique is used to split the space up into 4ths. 
-            Notice how every time the room gets generated there is a distinct cross shape in the middle that is always wall tiles. 
-            This is an artifact of the BSP method. Each leaf of the generated tree then has
-            basic cellular automata (CA) rules applied to it to make it appear more "natural." What you see is four entirely separate instances of the CA algorithm being applied.
+            The below code is from the Cave init() method. In init(), a Binary Space Partioning method is used to split the space up into 4 parts. (The final number of partitions will be equal to 2 * BSPiterations).s 
+            Notice how each time you regenerate the room there is a cross of wall tiles left over from the BSP algorithm. Each leaf of the generated tree then has
+            basic cellular automata (CA) rules applied to it to make it appear more "natural."
             <pre>
                 <code>
 init() {
@@ -160,8 +159,8 @@ init() {
                 </code>
             </pre>
 
-            Full code for how this generation functions are implemented can be found here: <a href="https://github.com/mattlink/ascii/blob/master/src/Rooms/Room.ts">github.com/mattlink/ascii</a> <br>
-            Full code for this demo: <a href="">github.com/mattlink/580-proj3</a>
+            Full code for these generation functions: <a href="https://github.com/mattlink/ascii/blob/master/src/Rooms/Room.ts">github.com/mattlink/ascii</a> <br>
+            Full code for this demo: <a href="https://github.com/mattlink/580proj3">github.com/mattlink/580-proj3</a>
         </div>
     </body>
 </html>

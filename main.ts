@@ -30,8 +30,8 @@ class Proj3Demo extends Game {
 
         // set up a room (this could be loaded via a JSON file)
         let room  = new Cave(this.WIDTH, this.HEIGHT, 'Cave');
-        room.wallTile = new Tile('Y', 'green', 'lightyellow');
-        room.floorTile = new Tile('.', 'brown', 'black');
+        room.wallTile = new Tile('U', 'green', 'black');
+        room.floorTile = new Tile('.', 'brown', 'white');
         room.init();
 
         let spawnbuffer = 3;
