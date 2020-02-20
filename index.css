@@ -1,0 +1,25 @@
+.tile {
+    display: inline-block; 
+    text-align: center;
+    height: 15px; 
+    width: 15px; 
+    background-color: red;
+    color:white;
+    border: 1px solid black;
+}
+
+/* h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+} */
+
+
+/* Taken from: http://web.simmons.edu/~grabiner/comm244/weekfour/code-test.html */
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 15px;
+  }
+
+  
